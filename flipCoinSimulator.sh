@@ -30,4 +30,26 @@ then
 	echo "Tails won by $Win"
 else
 	echo "Its a tie"
+	if [ $Heads -eq $Tails ]
+	then
+		while true
+		do
+			temp=$((RANDOM%2))
+			if(($temp==1))
+			then
+				Heads=$(($Heads+1))
+			else
+				Tails=$(($Tails+1))
+			fi
+			if [ $(($Heads-$Tails)) -eq 2 ]
+			then
+				echo "Head wins by 2 and score is:$Heads"
+			else
+				if [ $(($Tails-$Heads)) -eq 2 ]
+				then
+					echo "Tail wins by 2 and score is:$Tails"
+				fi
+			fi
+		done
+	fi
 fi
