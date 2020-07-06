@@ -1,9 +1,10 @@
 #!/bin/bash 
 
-echo Enter the number of times to flip a coin
-read n
+Heads=0
+Tails=0
+Win=0
 
-for((i=0 ; i<$n ; i++))
+while [ $Heads -ne 21 ] && [ $Tails -ne 21 ]
 do
 	Random=$((RANDOM % 2))
 	if [ $Random -eq 1 ]
@@ -16,9 +17,17 @@ do
 	fi
 done
 
-if [ $Heads -lt $Tails ]
+echo "Heads : $Heads"
+echo "Tails : $Tails"
+
+if [ $Heads -gt $Tails ]
 then
-	echo "Tails won by $Tails score"
+	Win=$(($Heads-$Tails))
+	echo "Heads won by $Win"
+elif [ $Tails -gt $Heads ]
+then
+	Win=$(($Tails-$Heads))
+	echo "Tails won by $Win"
 else
-	echo "Heads won by $Heads score"
+	echo "Its a tie"
 fi
